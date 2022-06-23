@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	queens := solveNQueens(4)
+	queens := solveNQueens(8)
 	for i := range queens {
 		fmt.Println("___")
 		for j := range queens[i] {
@@ -56,12 +56,12 @@ func isValid(row int, col int) bool {
 			return false
 		}
 	}
-	for i, j := row, col; j >= 0 && i >= 0; i, j = i-1, j-1 {
+	for i, j := row-1, col-1; j >= 0 && i >= 0; i, j = i-1, j-1 {
 		if chessBoard[i][j] == "Q" {
 			return false
 		}
 	}
-	for i, j := row, col; j < len(chessBoard) && i >= 0; i, j = i-1, j+1 {
+	for i, j := row-1, col+1; j < len(chessBoard) && i >= 0; i, j = i-1, j+1 {
 		if chessBoard[i][j] == "Q" {
 			return false
 		}
