@@ -6,12 +6,17 @@ import (
 	"strings"
 )
 
-func StrToA2rr(s string) [][]int {
+func Str2A2rr(s string) [][]int {
 	var err error
-	compile := regexp.MustCompile(`\d[^\]]+`)
+	s = s[1 : len(s)-1]
+	compile := regexp.MustCompile(`\[([^\]]+)\]`)
 
 	match := compile.FindAllString(s, -1)
+	if match == nil {
+		return [][]int{}
+	}
 	for i := range match {
+		match[i] = match[i][1 : len(match[i])-1]
 		match[i] = strings.Replace(match[i], ",", " ", -1)
 	}
 
@@ -29,11 +34,15 @@ func StrToA2rr(s string) [][]int {
 	return res
 }
 
-func StrToArr(s string) []int {
+func Str2Arr(s string) []int {
 	var err error
-	compile := regexp.MustCompile(`\d[^\]]+`)
+	compile := regexp.MustCompile(`\[([^\]]+)\]`)
 
-	match := compile.FindString(s)
+	m := compile.FindSubmatch([]byte(s))
+	if m == nil {
+		return []int{}
+	}
+	match := string(m[1])
 	match = strings.Replace(match, ",", " ", -1)
 	fields := strings.Fields(match)
 	res := make([]int, len(fields))

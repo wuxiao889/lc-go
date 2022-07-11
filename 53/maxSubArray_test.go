@@ -7,5 +7,5 @@ import (
 )
 
 func TestXX(t *testing.T) {
-	fmt.Println(maxSubArray2(util.StrToArr("[-2,1,-3,4,-1,2,1,-5,4]")))
+	fmt.Println(maxSubArray2(util.Str2Arr("[-2,1,-3,4,-1,2,1,-5,4]")))
 }

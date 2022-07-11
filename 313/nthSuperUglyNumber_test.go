@@ -19,7 +19,7 @@ func Test_nthSuperUglyNumber(t *testing.T) {
 			name: "test1",
 			args: args{
 				n:      12,
-				primes: util.StrToArr("[2,7,13,19]"),
+				primes: util.Str2Arr("[2,7,13,19]"),
 			},
 			want: 32,
 		},

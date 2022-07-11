@@ -11,11 +11,11 @@ var tests = []struct {
 	target     int
 }{
 	{
-		candidates: util.StrToArr("[1,1,2,5,6,7,10]"),
+		candidates: util.Str2Arr("[1,1,2,5,6,7,10]"),
 		target:     8,
 	},
 	{
-		candidates: util.StrToArr("[3,1,3,5,1,1]"),
+		candidates: util.Str2Arr("[3,1,3,5,1,1]"),
 		target:     8,
 	},
 }
