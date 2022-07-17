@@ -1,10 +1,13 @@
 package util
 
 import (
+	"math"
 	"regexp"
 	"strconv"
 	"strings"
 )
+
+const null = math.MaxInt
 
 func Str2A2rr(s string) [][]int {
 	var err error
@@ -47,6 +50,10 @@ func Str2Arr(s string) []int {
 	fields := strings.Fields(match)
 	res := make([]int, len(fields))
 	for i := range res {
+		if fields[i] == "null" {
+			res[i] = null
+			continue
+		}
 		res[i], err = strconv.Atoi(fields[i])
 		if err != nil {
 			panic(err)
