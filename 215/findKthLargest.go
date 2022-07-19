@@ -47,3 +47,34 @@ func quickSort(arr []int, l, r, k int) int {
 		return quickSort(arr, i+1, r, k)
 	}
 }
+
+//堆排序方法
+func heapSort(nums []int, k int) int {
+	n := len(nums)
+	for i := n/2 - 1; i >= 0; i-- {
+		down(nums, i, n)
+	}
+	for i := n - 1; i > n-k; i-- {
+		nums[0], nums[i] = nums[i], nums[0]
+		down(nums, 0, i)
+	}
+	return nums[0]
+}
+
+func down(nums []int, i, n int) {
+	for {
+		j1 := 2*i + 1
+		if j1 >= n {
+			return
+		}
+		j := j1
+		if j2 := j1 + 1; j2 < n && nums[j2] > nums[j1] {
+			j = j2
+		}
+		if nums[i] > nums[j] {
+			return
+		}
+		nums[i], nums[j] = nums[j], nums[i]
+		i = j
+	}
+}

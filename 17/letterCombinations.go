@@ -1,6 +1,6 @@
 package letterCombinations
 
-var m = [10]string{
+var mp = [10]string{
 	2: "abc",
 	3: "def",
 	4: "ghi",
@@ -16,6 +16,9 @@ var path []byte
 var digit string
 
 func letterCombinations(digits string) []string {
+	if len(digits) == 0 {
+		return []string{}
+	}
 	res = make([]string, 0)
 	path = make([]byte, 0)
 	digit = digits
@@ -29,7 +32,7 @@ func backtrace(digit string, k int) {
 		return
 	}
 	u := digit[k]
-	s := m[u-'0']
+	s := mp[u-'0']
 	for i := 0; i < len(s); i++ {
 		path = append(path, s[i])
 		backtrace(digit, k+1)
